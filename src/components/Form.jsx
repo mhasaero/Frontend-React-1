@@ -1,4 +1,5 @@
 import Create from "./Create";
+import Table from "./Table";
 import { useState } from "react";
 
 export default function Form() {
@@ -24,10 +25,10 @@ export default function Form() {
     <section className="bg-[#13232f] py-8 px-[5rem] w-lg h-[30rem] rounded mx-auto text-white mt-20">
       <div className="flex w-full h-16 mb-10">
         <button type="submit" className={!show ? active : passive} onClick={handleSignUpClick}>
-          Sign Up
+          CRUD
         </button>
         <button type="submit" className={show ? active : passive} onClick={handleLoginClick}>
-          Login
+          View
         </button>
       </div>
       {!show ? <Create /> : <Table />}
