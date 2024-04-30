@@ -3,11 +3,16 @@ import React, { useEffect, useState } from "react";
 import Input from "./Input";
 import ReqLabel from "./ReqLabel";
 
-export default function Create() {
+export default function Create({ list, setList }) {
+  const fist = [{ fname: "roy", lname: "kai", email: "lola@gmail.com", password: "anjai" }];
   const [state, setState] = useState({ fname: "", lname: "", email: "", password: "" });
   const [valid, setValid] = useState({ fname: false, lname: false, email: false, password: false });
   const { register, handleSubmit } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = () => {
+    const newData = { id: list.length + 1, fname: state.fname, lname: state.lname };
+    setList([...list, newData]);
+    console.log(list);
+  };
 
   function inputOnChange(e) {
     let data = e.target.value;
@@ -23,7 +28,7 @@ export default function Create() {
   }
 
   function labelValid(name, statement) {
-    return valid[name] ? <ReqLabel statement={statement} /> : "";
+    return valid[name] ? <ReqLabel statement={statement} /> : <></>;
   }
 
   return (
